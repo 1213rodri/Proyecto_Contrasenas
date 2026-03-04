@@ -155,11 +155,11 @@ El programa identifica automáticamente:
 ## 📁 Estructura del Proyecto
 ```
 robustpro/
-├── main.py              # Punto de entrada
-├── evaluador.py         # Lógica de evaluación y puntuación
-├── patrones.py          # Detección de patrones inseguros
-├── ui.py                # Interfaz de usuario en terminal
-├── wordlist.py          # Lista de palabras comunes
+├── main.py                     # Punto de entrada
+      ├── def evaluador         # Lógica de evaluación y puntuación
+      ├── def patrones          # Detección de patrones inseguros
+      ├── def ui                # Interfaz de usuario en terminal
+      ├── def wordlist          # Lista de palabras comunes
 ├── requirements.txt
 ├── README.md
 └── LICENSE
