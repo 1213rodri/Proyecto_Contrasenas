@@ -127,9 +127,9 @@ python robust.py
 
 ### Niveles de Clasificación
 ```
-  0 ──────── 20 ──────── 40 ──────── 60 ──────── 80 ──────── 100
-  🔴          🟠          🟡          🔵           🟢
-MUY DÉBIL   DÉBIL       MEDIA      FUERTE    MUY FUERTE
+  0 ──────────── 20 ──────────── 40 ──────────── 60 ──────────── 80 ──────────── 100
+         🔴              🟠               🟡              🔵               🟢
+      MUY DÉBIL        DÉBIL            MEDIA          FUERTE          MUY FUERTE
 ```
 
 | Rango | Nivel |
