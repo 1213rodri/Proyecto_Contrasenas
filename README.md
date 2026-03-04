@@ -118,12 +118,12 @@ python robust.py
 | Criterio | Puntos |
 |---|:---:|
 | 📏 Longitud ≥ 12 caracteres | **+20** |
-| 🔠 Incluye mayúsculas | **+15** |
-| 🔡 Incluye minúsculas | **+15** |
-| 🔢 Incluye números | **+15** |
-| 🔣 Incluye símbolos | **+15** |
-| 🛡️ Sin patrones comunes | **+20** |
-| | **Total: 100** |
+| 🔠 Incluye mayúsculas | **+15**  |
+| 🔡 Incluye minúsculas | **+15**  |
+| 🔢 Incluye números | **+15**  |
+| 🔣 Incluye símbolos | **+15**  |
+| 🛡️ Sin patrones comunes | **+20**  |
+| | **Total: 100**  |
 
 ### Niveles de Clasificación
 ```
