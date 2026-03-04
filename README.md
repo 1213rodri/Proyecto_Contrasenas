@@ -16,15 +16,15 @@
 ---
 
 ## 📋 Tabla de Contenidos
-- [🎯 Descripción](#-descripción)
-- [⚠️ Contexto de Seguridad](#️-contexto-de-seguridad)
-- [✨ Características](#-características)
-- [🚀 Instalación](#-instalación)
-- [💻 Uso](#-uso)
-- [📊 Sistema de Puntuación](#-sistema-de-puntuación)
-- [🔍 Detección de Patrones](#-detección-de-patrones)
-- [📁 Estructura del Proyecto](#-estructura-del-proyecto)
-- [📄 Licencia](#-licencia)
+- [  Descripción](#-descripción)
+- [  Contexto de Seguridad](#️-contexto-de-seguridad)
+- [  Características](#-características)
+- [  Instalación](#-instalación)
+- [  Uso](#-uso)
+- [  Sistema de Puntuación](#-sistema-de-puntuación)
+- [  Detección de Patrones](#-detección-de-patrones)
+- [  Estructura del Proyecto](#-estructura-del-proyecto)
+- [  Licencia](#-licencia)
 
 ---
 
