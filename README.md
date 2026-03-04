@@ -28,7 +28,7 @@
 
 ---
 
-## 🎯 Descripción
+##   Descripción
 
 **RobustPro** es un programa en Python para la **evaluación cuantitativa de la robustez de contraseñas**, aplicando criterios técnicos de seguridad informática. Determina objetivamente qué tan segura es una contraseña y proporciona retroalimentación específica para mejorarla.
 
@@ -49,7 +49,7 @@ Las contraseñas débiles facilitan ataques como:
 
 ---
 
-## ✨ Características
+##   Características
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    FUNCIONALIDADES                      │
@@ -66,7 +66,7 @@ Las contraseñas débiles facilitan ataques como:
 
 ---
 
-## 🚀 Instalación
+##  Instalación
 
 **Prerrequisitos:** Python 3.8+ y `pip`
 ```bash
@@ -83,15 +83,15 @@ venv\Scripts\activate           # Windows
 pip install -r requirements.txt
 
 # 4. Ejecuta
-python main.py
+python robust.py
 ```
 
 ---
 
-## 💻 Uso
+##  Uso
 ```
 ╔══════════════════════════════════════════════╗
-║       🔐  EVALUADOR DE CONTRASEÑAS           ║
+║           EVALUADOR DE CONTRASEÑAS           ║
 ╚══════════════════════════════════════════════╝
 
   Ingresa tu contraseña: ••••••••••••
