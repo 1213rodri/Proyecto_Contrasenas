@@ -3,11 +3,18 @@
 El | import re | esto nos servira para poder validar si es que hay un simbolo en la contrasena
 a diferencia de otros metodos es el mas completo
 
+El | import subprocess | nos ayuda a poder limpiar la temrninal despues de que el usuario haya completado el registro
+
+El | import time | nos ayuda a dar 5 segundos de espera entre el cambio del registro al inicio de sesion
+
+
+Para consultar mas del proyecto seguir el siguiente link en caso de actualizaciones: https://github.com/1213rodri/Proyecto_Contrasenas
 """
 
 import re 
-import subprocess
 import time
+import subprocess
+import getpass
 
 def verificar_longitud(password):
     conta=0
@@ -229,12 +236,17 @@ Se uso [and] en lugar de [or] porque ambas condiciones deben cumplirse al mismo 
 """
 
 
+
+
+
+
 def main():
+    subprocess.run("clear", shell=True)
     print("Bienvenido al registro")
 
     user = input("Ingrece su usuario: ")
     while True:
-        password = input("Ingrece su contrasena: ")
+        password = getpass.getpass(prompt='Contraseña: ', echo_char='*')
         puntaje = calcular_puntaje(password)
         clasificar_nivel(puntaje)
         if user==password:
@@ -252,7 +264,7 @@ def main():
 
     while True:
         user2=input("Ingrece su ususario:  ")
-        password2=input("Ingrece su contrasena:  ")
+        password2 = getpass.getpass(prompt='Contraseña: ', echo_char='*')
         
         if user2 == user and password2==password:
             print("Inicio de sesion exitosamente")
@@ -264,7 +276,6 @@ def main():
         else:
             print("Error en las credenciales")
 
-
 """
 En esta seccion de main, se le da la bienvenida al usuario y se solicita su nombre de usuario.
 Luego entra en un ciclo [while True] que seguira pidiendo la contrasena hasta que sea lo suficientemente segura.
@@ -275,6 +286,10 @@ se muestra el mensaje de inicio de sesion exitoso y se rompe el ciclo con [break
 
 if __name__ == "__main__":
     main()
+
+
+
+
 
 """
 
