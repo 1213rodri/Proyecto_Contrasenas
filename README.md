@@ -4,7 +4,7 @@
 
 **Evaluador de Robustez de Contraseñas en Python**
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.14.3%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 [![Security](https://img.shields.io/badge/Focus-CyberSecurity-ef4444?style=for-the-badge&logo=shield&logoColor=white)]()
 [![Status](https://img.shields.io/badge/Status-Active-22c55e?style=for-the-badge)]()
