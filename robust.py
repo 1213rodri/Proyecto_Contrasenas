@@ -196,7 +196,6 @@ Have I Been Pwned — haveibeenpwned.com/Passwords — base de datos de contrase
 """
 
 
-
 def calcular_puntaje(password):
     puntaje  = verificar_longitud(password)
     puntaje += verificar_mayusculas(password)
@@ -214,7 +213,6 @@ Al final se retorna el puntaje total que puede ir de 0 a 100.
 
 """
 
-
 def clasificar_nivel(puntaje):
     if puntaje>=0 and puntaje<=20:
         print("Su contrasena es muy debil")
@@ -227,7 +225,6 @@ def clasificar_nivel(puntaje):
     elif puntaje>=81 and puntaje<=100:
         print("Su contrasena es muy fuerte")
 
-
 """
 En esta seccion de clasificar_nivel, se recibe el puntaje calculado y se clasifica en 5 niveles:
 Muy debil (0-20), Debil (21-40), Media (41-60), Fuerte (61-80), Muy fuerte (81-100).
@@ -235,46 +232,54 @@ Se utilizan condicionales [if/elif] con [and] para verificar que el puntaje este
 Se uso [and] en lugar de [or] porque ambas condiciones deben cumplirse al mismo tiempo para pertenecer al rango.
 """
 
-
-
-
-
-
 def main():
     subprocess.run("clear", shell=True)
-    print("Bienvenido al registro")
+    print(" Bienvenido al Registro \n")
 
-    user = input("Ingrece su usuario: ")
+    # --- Registro ---
     while True:
-        password = getpass.getpass(prompt='Contraseña: ', echo_char='*')
+        user = input("Ingrese su usuario: ")
+
+        if len(user) == 0:
+            print("Error: El usuario no puede estar vacío.\n")
+            continue
+        if " " in user:
+            print("Error: El usuario no puede contener espacios.\n")
+            continue
+
+        password = getpass.getpass(prompt="Contraseña: ")
         puntaje = calcular_puntaje(password)
         clasificar_nivel(puntaje)
-        if user==password:
-            print("Error: su usuario debe de ser diferente a la contrasena")
-        else:
-            if puntaje >= 61:
-               print("Registro exitoso")
-               break
-            else:
-               print("Intente con una contrasena mas segura\n")
 
-    time.sleep(5)        
+        if user == password:
+            print("Error: El usuario debe ser diferente a la contraseña.\n")
+            continue
+
+        if puntaje >= 61:
+            print("Registro exitoso.\n")
+            break
+        else:
+            print("Intente con una contraseña más segura.\n")
+
+    time.sleep(3)
     subprocess.run("clear", shell=True)
-    print("Inicio de sesion")
+
+    # --- Inicio de sesión ---
+    print(" Inicio de Sesión \n")
 
     while True:
-        user2=input("Ingrece su ususario:  ")
-        password2 = getpass.getpass(prompt='Contraseña: ', echo_char='*')
-        
-        if user2 == user and password2==password:
-            print("Inicio de sesion exitosamente")
+        user2 = input("Ingrese su usuario: ")
+        password2 = getpass.getpass(prompt="Contraseña: ")
+
+        if user2 == user and password2 == password:
+            print("Sesión iniciada exitosamente.")
             break
-        elif user2 != user and password2==password:
-            print("El usurio no coincide, intente nuevamente.")
+        elif user2 != user and password2 == password:
+            print("El usuario no coincide. Intente nuevamente.\n")
         elif user2 == user and password2 != password:
-            print("La contrasena no coincide, intente nuevamente.")
+            print("La contraseña no coincide. Intente nuevamente.\n")
         else:
-            print("Error en las credenciales")
+            print("Usuario y contraseña incorrectos. Intente nuevamente.\n")
 
 """
 En esta seccion de main, se le da la bienvenida al usuario y se solicita su nombre de usuario.
@@ -283,13 +288,8 @@ En cada iteracion se calcula el puntaje, se clasifica el nivel y si el puntaje e
 se muestra el mensaje de inicio de sesion exitoso y se rompe el ciclo con [break].
 """
 
-
 if __name__ == "__main__":
     main()
-
-
-
-
 
 """
 
