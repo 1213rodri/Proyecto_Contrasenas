@@ -71,16 +71,15 @@ Las contraseñas débiles facilitan ataques como:
 **Prerrequisitos:** Python 3.8+ y `pip`
 ```bash
 # 1. Clona el repositorio
-git clone https://github.com/rodrigo/robustpro.git
-cd robustpro
+git clone https://github.com/1213rodri/Proyecto_Contrasenas.git
 
 # 2. (Opcional) Entorno virtual
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate        # Linux / macOS
 venv\Scripts\activate           # Windows
 
 # 3. Instala dependencias
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 # 4. Ejecuta
 python robust.py
