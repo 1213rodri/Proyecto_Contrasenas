@@ -78,11 +78,8 @@ python3 -m venv venv
 source venv/bin/activate        # Linux / macOS
 venv\Scripts\activate           # Windows
 
-# 3. Instala dependencias
-pip3 install -r requirements.txt
-
-# 4. Ejecuta
-python robust.py
+# 3. Ejecuta
+python3 robust.py
 ```
 
 ---
