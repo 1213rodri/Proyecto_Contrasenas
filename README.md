@@ -152,10 +152,22 @@ El programa identifica automáticamente:
 ```
 robustpro/
 ├── main.py                     # Punto de entrada
-      ├── def evaluador         # Lógica de evaluación y puntuación
-      ├── def patrones          # Detección de patrones inseguros
-      ├── def ui                # Interfaz de usuario en terminal
-      ├── def wordlist          # Lista de palabras comunes
+│   ├── evaluador               # Lógica de evaluación y puntuación
+│   │   ├── verificar_longitud()
+│   │   ├── verificar_mayusculas()
+│   │   ├── verificar_minusculas()
+│   │   ├── verificar_numeros()
+│   │   ├── verificar_simbolos()
+│   │   └── calcular_puntaje()
+│   ├── patrones                # Detección de patrones inseguros
+│   │   └── verificar_patrones()
+│   ├── ui                      # Interfaz de usuario en terminal
+│   │   ├── construir_barra()
+│   │   ├── input_password_live()
+│   │   ├── input_password_oculta()
+│   │   └── main()
+│   └── wordlist                # Lista de palabras comunes
+│       └── patrones_comunes[]
 ├── requirements.txt
 ├── README.md
 └── LICENSE
