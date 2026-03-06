@@ -1,0 +1,166 @@
+DOCUMENTACION — PROYECTO CONTRASENAS
+https://github.com/1213rodri/Proyecto_Contrasenas
+=====================================================================
+
+
+MODULOS UTILIZADOS
+=====================================================================
+
+import re
+    Sirve para validar si hay un simbolo en la contrasena.
+    A diferencia de otros metodos, es el mas completo.
+
+import subprocess
+    Limpia la terminal despues de que el usuario haya completado el registro.
+
+import time
+    Da 3 segundos de espera entre el cambio del registro y el inicio de sesion.
+
+import sys
+    Permite leer caracteres individuales desde la terminal
+    para capturar la contrasena tecla por tecla.
+
+import tty
+    Cambia la terminal a modo raw para capturar cada tecla
+    sin necesidad de presionar Enter.
+
+import termios
+    Guarda y restaura la configuracion original de la terminal
+    despues de capturar la contrasena.
+
+rich (Console, Live, Text)
+    Permite mostrar texto con colores, estilos y la barra de
+    fortaleza en tiempo real mientras el usuario escribe.
+
+
+FUNCIONES DE VERIFICACION
+=====================================================================
+
+verificar_longitud(password)
+    Utiliza la funcion [len] para saber la cantidad de caracteres de la contrasena.
+    Si la contrasena tiene 12 o mas caracteres, suma 20 puntos.
+    Si es menor de 12, no se suman puntos.
+
+verificar_mayusculas(password)
+    Utiliza los metodos [any] e [isupper].
+    [any]     = Verifica condiciones en un conjunto de datos (lista o cadena).
+    [isupper] = Verifica si al menos un caracter es mayuscula.
+    Si se cumple, suma 15 puntos.
+
+verificar_minusculas(password)
+    Mismo procedimiento que mayusculas, pero con [islower].
+    [islower] = Verifica si al menos un caracter esta en minuscula.
+    Si se cumple, suma 15 puntos.
+
+verificar_numeros(password)
+    Utiliza [isdigit], que devuelve True si el caracter es un digito numerico ('0' al '9').
+    Si se cumple, suma 15 puntos.
+
+verificar_simbolos(password)
+    Utiliza el modulo [re] con expresiones regulares junto con [any].
+    El patron r"[\W_]" detecta cualquier caracter que NO sea letra o numero
+    (simbolos como !@#$%^&*).
+    Se usa re.search en lugar de re.match para mayor precision semantica.
+    Si se cumple, suma 15 puntos.
+
+verificar_patrones(password)
+    Contiene una lista llamada [patrones_comunes] con secuencias numericas,
+    alfabeticas, palabras frecuentes y combinaciones tipicas que hacen debil
+    una contrasena.
+    [any] recorre la lista y verifica si alguno de esos patrones esta
+    contenido dentro de la contrasena con el operador [in].
+    Se aplica .lower() para detectar patrones sin importar mayusculas
+    (ej. "Password" o "QWERTY" son detectados correctamente).
+    Si se encuentra un patron: 0 puntos.
+    Si no se encuentra ningun patron: 20 puntos.
+
+    Fuentes del diccionario de patrones:
+    - SecLists (GitHub) — github.com/danielmiessler/SecLists
+      Coleccion de wordlists usadas en pentesting con contrasenas reales filtradas.
+    - RockYou wordlist — rockyou.txt
+      Lista de contrasenas mas famosa en ciberseguridad, de una brecha real de 2009.
+    - OWASP — owasp.org
+      Documentacion sobre contrasenas debiles y patrones comunes.
+    - Have I Been Pwned — haveibeenpwned.com/Passwords
+      Base de datos de contrasenas comprometidas en brechas reales (Troy Hunt).
+
+calcular_puntaje(password)
+    Llama a todas las funciones de verificacion y acumula el puntaje total.
+    El puntaje va de 0 a 100.
+
+
+SISTEMA DE PUNTAJE
+=====================================================================
+
+    Criterio                 Puntos
+    ─────────────────────────────────
+    Longitud >= 12           +20
+    Al menos 1 mayuscula     +15
+    Al menos 1 minuscula     +15
+    Al menos 1 numero        +15
+    Al menos 1 simbolo       +15
+    Sin patrones comunes     +20
+    ─────────────────────────────────
+    TOTAL MAXIMO             100
+
+
+NIVELES DE FORTALEZA
+=====================================================================
+
+    Puntaje     Nivel           Color en barra
+    ──────────────────────────────────────────
+    0  - 20     Muy debil       Rojo
+    21 - 40     Debil           Naranja
+    41 - 60     Media           Amarillo
+    61 - 80     Fuerte          Verde
+    81 - 100    Muy fuerte      Verde brillante
+
+    Solo se permite el registro con contrasenas de nivel Fuerte o Muy fuerte
+    (puntaje >= 61).
+
+
+CAPTURA DE CONTRASENA
+=====================================================================
+
+input_password_live()   — Uso: REGISTRO
+    Captura la contrasena tecla por tecla mostrando '*' por cada caracter.
+    Actualiza la barra de fortaleza en tiempo real usando rich Live.
+    Soporta Backspace para borrar y Ctrl+C para salir.
+
+input_password_oculta() — Uso: LOGIN
+    Captura la contrasena tecla por tecla mostrando solo '*'.
+    Sin barra de fortaleza ni evaluacion de puntaje.
+    Soporta Backspace para borrar y Ctrl+C para salir.
+
+    Ambas funciones usan [tty] y [termios] para captura de bajo nivel.
+    Compatibles con Mac y Linux. No compatibles con Windows.
+
+
+FLUJO DEL PROGRAMA (main)
+=====================================================================
+
+    1. Limpia la terminal.
+    2. Solicita usuario:
+       - No puede estar vacio.
+       - No puede contener espacios.
+    3. Solicita contrasena con barra en tiempo real.
+       - No puede ser igual al usuario.
+       - No puede contener el nombre de usuario como subcadena.
+       - Debe tener puntaje >= 61 para continuar.
+    4. Registro exitoso → espera 3 segundos → limpia terminal.
+    5. Solicita usuario y contrasena para inicio de sesion.
+       - Maximo 3 intentos fallidos antes de bloquear el acceso.
+       - Distingue si fallo el usuario, la contrasena, o ambos.
+
+
+MEJORAS RESPECTO A LA VERSION ORIGINAL
+=====================================================================
+
+    - Barra de fortaleza en tiempo real con colores (rich).
+    - Login sin barra (solo asteriscos).
+    - Deteccion de patrones case-insensitive (.lower()).
+    - re.search en lugar de re.match en verificar_simbolos.
+    - Verificacion de que la contrasena no contenga el usuario.
+    - Limite de 3 intentos en el login con mensaje de bloqueo.
+    - Mensajes de error y exito con colores usando rich.
+    - Correccion del comentario de tiempo (3 segundos, no 5).
